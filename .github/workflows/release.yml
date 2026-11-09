@@ -1,0 +1,80 @@
+name: Release
+
+# Run from the Actions tab on the default branch. It writes the version into the manifest, tags the commit and attaches
+# the packaged plugin to a GitHub release, which is the file to submit to the Elgato Marketplace.
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Version to release, such as 0.1.0
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    name: Release v${{ inputs.version }}
+    if: github.ref_name == github.event.repository.default_branch
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      VERSION: ${{ inputs.version }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Refuse a malformed or released version
+        run: |
+          if ! [[ "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "::error::Write the version as major.minor.patch, such as 0.1.0."
+            exit 1
+          fi
+          if git ls-remote --exit-code --tags origin "refs/tags/v$VERSION" > /dev/null; then
+            echo "::error::v$VERSION is already tagged."
+            exit 1
+          fi
+
+      - run: npm ci
+
+      # Stream Deck reads four numbers; the last one is left at 0.
+      - name: Write the version into the manifest
+        run: |
+          node --input-type=module -e '
+            import fs from "node:fs";
+            const path = "com.vcamapp.vcam.sdPlugin/manifest.json";
+            const manifest = JSON.parse(fs.readFileSync(path, "utf8"));
+            manifest.Version = `${process.env.VERSION}.0`;
+            fs.writeFileSync(path, JSON.stringify(manifest, null, "\t") + "\n");
+          '
+
+      - run: npm run check
+
+      - run: npm test
+
+      - run: npx streamdeck pack .build/com.vcamapp.vcam.sdPlugin --output .build/release --force --no-update-check
+
+      # The branch and the tag go up together, so a rejected push leaves neither behind.
+      - name: Commit and tag the version
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if ! git diff --quiet; then
+            git commit --all --message "Release v$VERSION"
+          fi
+          git tag "v$VERSION"
+          git push --atomic origin "HEAD:refs/heads/$GITHUB_REF_NAME" "refs/tags/v$VERSION"
+
+      - name: Create the release
+        run: gh release create "v$VERSION" .build/release/com.vcamapp.vcam.streamDeckPlugin --verify-tag --title "v$VERSION" --generate-notes

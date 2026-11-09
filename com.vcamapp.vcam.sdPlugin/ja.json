@@ -1,0 +1,100 @@
+{
+	"Description": "VCamのシーン・アバター・表情・モーション・カメラの画角などをStream Deckから切り替え、VCamで表示中のものをキーで確かめられます。VCamの設定でVCam APIを有効にしたVCamNovaで使えます。",
+	"com.vcamapp.vcam.scene": {
+		"Name": "シーン",
+		"Tooltip": "シーンを切り替えます。表示中のシーンのキーが点灯します。"
+	},
+	"com.vcamapp.vcam.avatar": {
+		"Name": "アバター",
+		"Tooltip": "アバターを切り替えます。表示中のアバターのキーが点灯します。"
+	},
+	"com.vcamapp.vcam.expression": {
+		"Name": "表情",
+		"Tooltip": "表情を付けたり外したりします。付けている間はキーが点灯します。"
+	},
+	"com.vcamapp.vcam.motion": {
+		"Name": "モーション",
+		"Tooltip": "モーションを再生・停止します。再生中はキーが点灯します。"
+	},
+	"com.vcamapp.vcam.shortcut": {
+		"Name": "ショートカット",
+		"Tooltip": "VCamのショートカットを実行します。実行中はキーが点灯します。"
+	},
+	"com.vcamapp.vcam.recording": {
+		"Name": "録画",
+		"Tooltip": "録画を開始・停止します。録画中は経過時間を表示します。"
+	},
+	"com.vcamapp.vcam.emoji": {
+		"Name": "絵文字",
+		"Tooltip": "アバターの上に絵文字を表示します。"
+	},
+	"com.vcamapp.vcam.subtitle": {
+		"Name": "字幕",
+		"Tooltip": "字幕を表示・非表示にします。表示中はキーが点灯します。"
+	},
+	"com.vcamapp.vcam.object-visibility": {
+		"Name": "オブジェクトの表示",
+		"Tooltip": "シーンのオブジェクトを表示・非表示にします。表示中はキーが点灯します。"
+	},
+	"com.vcamapp.vcam.video": {
+		"Name": "動画",
+		"Tooltip": "シーンの動画を再生・一時停止します。再生中はキーが点灯します。"
+	},
+	"com.vcamapp.vcam.camera-preset": {
+		"Name": "カメラのプリセット",
+		"Tooltip": "保存した画角にカメラを動かします。キーを長押しすると、今の画角を保存します。"
+	},
+	"com.vcamapp.vcam.camera-reset": {
+		"Name": "カメラのリセット",
+		"Tooltip": "カメラを初期の画角に戻します。"
+	},
+	"com.vcamapp.vcam.background-color": {
+		"Name": "背景色",
+		"Tooltip": "キャンバスの一番奥の色を変えます。"
+	},
+	"com.vcamapp.vcam.tracking-status": {
+		"Name": "トラッキングの状態",
+		"Tooltip": "トラッキングを送るアプリやデバイスが接続している間、キーが点灯します。"
+	},
+	"com.vcamapp.vcam.camera-zoom": {
+		"Name": "拡大/縮小",
+		"Tooltip": "回してカメラを拡大・縮小します。押すとカメラをリセットします。",
+		"Encoder": {
+			"TriggerDescription": {
+				"Rotate": "拡大/縮小",
+				"Push": "カメラのリセット"
+			}
+		}
+	},
+	"com.vcamapp.vcam.expression-weight": {
+		"Name": "表情の強さ",
+		"Tooltip": "表情の強さを変えます。押すと最大とオフを切り替えます。",
+		"Encoder": {
+			"TriggerDescription": {
+				"Rotate": "強さ",
+				"Push": "オン/オフ"
+			}
+		}
+	},
+	"Localization": {
+		"Scene {number}": "シーン {number}",
+		"Model": "モデル",
+		"Image": "画像",
+		"Video": "動画",
+		"Screen": "画面",
+		"Video Capture": "映像キャプチャ",
+		"Web": "ウェブ",
+		"Text": "テキスト",
+		"Wind": "風",
+		"Untitled": "名前なし",
+		"VCam is not connected": "VCamに接続していません",
+		"Update VCam to use this action": "このアクションを使うにはVCamを更新してください",
+		"Could not read from VCam": "VCamから読み込めませんでした",
+		"VCam is not connected. Start VCam, turn on the VCam API in Settings > Integration, and check Connection below.": "VCamに接続していません。VCamを起動して設定の「連携」でVCam APIを有効にし、下の「接続」を確認してください。",
+		"This action needs VCam API {since} or later, and the connected VCam has API {current}. Update VCam to use it.": "このアクションにはVCam API {since}以降が必要ですが、接続中のVCamはAPI {current}です。使うにはVCamを更新してください。",
+		"This action needs VCam API {since} or later, and the connected VCam is older. Update VCam to use it.": "このアクションにはVCam API {since}以降が必要ですが、接続中のVCamはそれより前の版です。使うにはVCamを更新してください。",
+		"Zoom": "拡大/縮小",
+		"Expression": "表情",
+		"Offline": "未接続"
+	}
+}

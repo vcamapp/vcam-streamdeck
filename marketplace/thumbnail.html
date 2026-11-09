@@ -1,0 +1,136 @@
+<!doctype html>
+<meta charset="utf-8" />
+<style>
+	html,
+	body {
+		margin: 0;
+		width: 1920px;
+		height: 960px;
+		overflow: hidden;
+	}
+
+	body {
+		align-items: center;
+		background: radial-gradient(circle at 78% 50%, #3a3f47 0%, #24272c 45%, #17181b 100%);
+		color: #f5f5f7;
+		display: flex;
+		font-family: -apple-system, "Helvetica Neue", sans-serif;
+		gap: 120px;
+		justify-content: center;
+	}
+
+	.intro {
+		width: 640px;
+	}
+
+	.intro img {
+		display: block;
+		filter: drop-shadow(0 20px 40px rgb(0 0 0 / 45%));
+		height: 220px;
+		margin-left: -10px;
+		width: 220px;
+	}
+
+	h1 {
+		font-size: 128px;
+		font-weight: 800;
+		letter-spacing: -2px;
+		margin: 48px 0 8px;
+	}
+
+	.tagline {
+		font-size: 52px;
+		font-weight: 600;
+		line-height: 1.2;
+		margin: 0 0 32px;
+	}
+
+	.details {
+		color: #b4b9c0;
+		font-size: 34px;
+		line-height: 1.45;
+		margin: 0;
+	}
+
+	.deck {
+		background: linear-gradient(#2a2c31, #111214);
+		border-radius: 64px;
+		box-shadow:
+			0 40px 90px rgb(0 0 0 / 55%),
+			inset 0 2px 0 rgb(255 255 255 / 8%);
+		display: grid;
+		gap: 26px;
+		grid-template-columns: repeat(5, 150px);
+		padding: 56px;
+	}
+
+	.key {
+		border-radius: 26px;
+		box-shadow: 0 0 0 3px #3a3c42;
+		height: 150px;
+		overflow: hidden;
+		position: relative;
+		width: 150px;
+	}
+
+	.key img {
+		display: block;
+		height: 100%;
+		width: 100%;
+	}
+
+	.key span {
+		bottom: 10px;
+		font-size: 21px;
+		font-weight: 700;
+		left: 0;
+		line-height: 1.1;
+		position: absolute;
+		right: 0;
+		text-align: center;
+		text-shadow:
+			0 0 4px #000,
+			0 0 2px #000;
+		white-space: pre-line;
+	}
+</style>
+
+<section class="intro">
+	<img src="../.build/marketplace/icon-1024.png" alt="" />
+	<h1>VCam</h1>
+	<p class="tagline">Control VCam from Stream Deck</p>
+	<p class="details">Switch scenes, avatars, expressions, motions and camera views, and see on the keys what VCam is doing.</p>
+</section>
+
+<section class="deck" id="deck"></section>
+
+<script>
+	const keys = [
+		["scene", true, "Opening"],
+		["scene", false, "Talk"],
+		["scene", false, "BRB"],
+		["avatar", true, "Avatar"],
+		["recording", true, "12:34"],
+		["expression", true, "happy"],
+		["expression", false, "sad"],
+		["motion", false, "wave"],
+		["emoji", false, "👋"],
+		["subtitle", true, ""],
+		["object-visibility", true, "Logo"],
+		["video", false, "Intro"],
+		["camera-preset", false, "Close-up"],
+		["tracking-status", true, "VMC"],
+		["shortcut", false, "Start"],
+	];
+	const deck = document.getElementById("deck");
+	for (const [action, on, title] of keys) {
+		const key = document.createElement("div");
+		key.className = "key";
+		const image = document.createElement("img");
+		image.src = `../com.vcamapp.vcam.sdPlugin/imgs/actions/${action}/${on ? "key-on" : "key"}.svg`;
+		const label = document.createElement("span");
+		label.textContent = title;
+		key.append(image, label);
+		deck.append(key);
+	}
+</script>

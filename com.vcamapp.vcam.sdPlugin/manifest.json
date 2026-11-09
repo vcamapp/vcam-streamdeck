@@ -1,0 +1,369 @@
+{
+	"Name": "VCam",
+	"Version": "0.1.0.0",
+	"Author": "tattn",
+	"Description": "Switch VCam's scenes, avatars, expressions, motions, and camera views from Stream Deck, and see on the keys what VCam is showing. Works with VCamNova while the VCam API is turned on in VCam's settings.",
+	"UUID": "com.vcamapp.vcam",
+	"Icon": "imgs/plugin/marketplace",
+	"Category": "VCam",
+	"CategoryIcon": "imgs/plugin/category-icon",
+	"CodePath": "bin/plugin.js",
+	"SDKVersion": 3,
+	"Software": {
+		"MinimumVersion": "7.1"
+	},
+	"OS": [
+		{
+			"Platform": "mac",
+			"MinimumVersion": "12"
+		},
+		{
+			"Platform": "windows",
+			"MinimumVersion": "10"
+		}
+	],
+	"Nodejs": {
+		"Version": "24",
+		"Debug": "enabled"
+	},
+	"Actions": [
+		{
+			"Name": "Scene",
+			"UUID": "com.vcamapp.vcam.scene",
+			"Icon": "imgs/actions/scene/icon",
+			"Tooltip": "Switches to a scene. Lights up while the scene is showing.",
+			"PropertyInspectorPath": "ui/inspector.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/scene/key",
+					"TitleAlignment": "bottom"
+				},
+				{
+					"Image": "imgs/actions/scene/key-on",
+					"TitleAlignment": "bottom"
+				}
+			],
+			"SupportedInMultiActions": true,
+			"DisableAutomaticStates": true
+		},
+		{
+			"Name": "Avatar",
+			"UUID": "com.vcamapp.vcam.avatar",
+			"Icon": "imgs/actions/avatar/icon",
+			"Tooltip": "Switches to an avatar. Lights up while it is showing.",
+			"PropertyInspectorPath": "ui/inspector.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/avatar/key",
+					"TitleAlignment": "bottom"
+				},
+				{
+					"Image": "imgs/actions/avatar/key-on",
+					"TitleAlignment": "bottom"
+				}
+			],
+			"SupportedInMultiActions": true,
+			"DisableAutomaticStates": true
+		},
+		{
+			"Name": "Expression",
+			"UUID": "com.vcamapp.vcam.expression",
+			"Icon": "imgs/actions/expression/icon",
+			"Tooltip": "Puts on an expression, or takes it off. Lights up while it is on.",
+			"PropertyInspectorPath": "ui/inspector.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/expression/key",
+					"TitleAlignment": "bottom"
+				},
+				{
+					"Image": "imgs/actions/expression/key-on",
+					"TitleAlignment": "bottom"
+				}
+			],
+			"SupportedInMultiActions": true,
+			"DisableAutomaticStates": true
+		},
+		{
+			"Name": "Motion",
+			"UUID": "com.vcamapp.vcam.motion",
+			"Icon": "imgs/actions/motion/icon",
+			"Tooltip": "Plays a motion, or stops it. Lights up while it is playing.",
+			"PropertyInspectorPath": "ui/inspector.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/motion/key",
+					"TitleAlignment": "bottom"
+				},
+				{
+					"Image": "imgs/actions/motion/key-on",
+					"TitleAlignment": "bottom"
+				}
+			],
+			"SupportedInMultiActions": true,
+			"DisableAutomaticStates": true
+		},
+		{
+			"Name": "Shortcut",
+			"UUID": "com.vcamapp.vcam.shortcut",
+			"Icon": "imgs/actions/shortcut/icon",
+			"Tooltip": "Runs one of your VCam shortcuts. Lights up while it is running.",
+			"PropertyInspectorPath": "ui/inspector.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/shortcut/key",
+					"TitleAlignment": "bottom"
+				},
+				{
+					"Image": "imgs/actions/shortcut/key-on",
+					"TitleAlignment": "bottom"
+				}
+			],
+			"SupportedInMultiActions": true,
+			"DisableAutomaticStates": true
+		},
+		{
+			"Name": "Recording",
+			"UUID": "com.vcamapp.vcam.recording",
+			"Icon": "imgs/actions/recording/icon",
+			"Tooltip": "Starts or stops recording a video. Shows the time while recording.",
+			"PropertyInspectorPath": "ui/inspector.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/recording/key",
+					"TitleAlignment": "bottom"
+				},
+				{
+					"Image": "imgs/actions/recording/key-on",
+					"TitleAlignment": "bottom"
+				}
+			],
+			"SupportedInMultiActions": true,
+			"DisableAutomaticStates": true
+		},
+		{
+			"Name": "Emoji",
+			"UUID": "com.vcamapp.vcam.emoji",
+			"Icon": "imgs/actions/emoji/icon",
+			"Tooltip": "Shows an emoji over the avatar.",
+			"PropertyInspectorPath": "ui/inspector.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/emoji/key",
+					"TitleAlignment": "bottom"
+				}
+			],
+			"SupportedInMultiActions": true,
+			"DisableAutomaticStates": true
+		},
+		{
+			"Name": "Subtitle",
+			"UUID": "com.vcamapp.vcam.subtitle",
+			"Icon": "imgs/actions/subtitle/icon",
+			"Tooltip": "Shows a subtitle, or hides it. Lights up while it is showing.",
+			"PropertyInspectorPath": "ui/inspector.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/subtitle/key",
+					"TitleAlignment": "bottom"
+				},
+				{
+					"Image": "imgs/actions/subtitle/key-on",
+					"TitleAlignment": "bottom"
+				}
+			],
+			"SupportedInMultiActions": true,
+			"DisableAutomaticStates": true
+		},
+		{
+			"Name": "Object Visibility",
+			"UUID": "com.vcamapp.vcam.object-visibility",
+			"Icon": "imgs/actions/object-visibility/icon",
+			"Tooltip": "Shows or hides an object in the scene. Lights up while it is showing.",
+			"PropertyInspectorPath": "ui/inspector.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/object-visibility/key",
+					"TitleAlignment": "bottom"
+				},
+				{
+					"Image": "imgs/actions/object-visibility/key-on",
+					"TitleAlignment": "bottom"
+				}
+			],
+			"SupportedInMultiActions": true,
+			"DisableAutomaticStates": true
+		},
+		{
+			"Name": "Video",
+			"UUID": "com.vcamapp.vcam.video",
+			"Icon": "imgs/actions/video/icon",
+			"Tooltip": "Plays or pauses a video in the scene. Lights up while it is playing.",
+			"PropertyInspectorPath": "ui/inspector.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/video/key",
+					"TitleAlignment": "bottom"
+				},
+				{
+					"Image": "imgs/actions/video/key-on",
+					"TitleAlignment": "bottom"
+				}
+			],
+			"SupportedInMultiActions": true,
+			"DisableAutomaticStates": true
+		},
+		{
+			"Name": "Camera Preset",
+			"UUID": "com.vcamapp.vcam.camera-preset",
+			"Icon": "imgs/actions/camera-preset/icon",
+			"Tooltip": "Moves the camera to a saved view. Hold the key to save the view on screen.",
+			"PropertyInspectorPath": "ui/inspector.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/camera-preset/key",
+					"TitleAlignment": "bottom"
+				}
+			],
+			"SupportedInMultiActions": true,
+			"DisableAutomaticStates": true
+		},
+		{
+			"Name": "Reset Camera",
+			"UUID": "com.vcamapp.vcam.camera-reset",
+			"Icon": "imgs/actions/camera-reset/icon",
+			"Tooltip": "Resets the camera to its default view.",
+			"PropertyInspectorPath": "ui/inspector.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/camera-reset/key",
+					"TitleAlignment": "bottom"
+				}
+			],
+			"SupportedInMultiActions": true,
+			"DisableAutomaticStates": true
+		},
+		{
+			"Name": "Background Color",
+			"UUID": "com.vcamapp.vcam.background-color",
+			"Icon": "imgs/actions/background-color/icon",
+			"Tooltip": "Changes the color behind everything on the canvas.",
+			"PropertyInspectorPath": "ui/inspector.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/background-color/key",
+					"TitleAlignment": "bottom"
+				}
+			],
+			"SupportedInMultiActions": true,
+			"DisableAutomaticStates": true
+		},
+		{
+			"Name": "Tracking Status",
+			"UUID": "com.vcamapp.vcam.tracking-status",
+			"Icon": "imgs/actions/tracking-status/icon",
+			"Tooltip": "Lights up while an app or device sending tracking is connected.",
+			"PropertyInspectorPath": "ui/inspector.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/tracking-status/key",
+					"TitleAlignment": "bottom"
+				},
+				{
+					"Image": "imgs/actions/tracking-status/key-on",
+					"TitleAlignment": "bottom"
+				}
+			],
+			"SupportedInMultiActions": false,
+			"DisableAutomaticStates": true
+		},
+		{
+			"Name": "Zoom",
+			"UUID": "com.vcamapp.vcam.camera-zoom",
+			"Icon": "imgs/actions/camera-zoom/icon",
+			"Tooltip": "Zooms the camera in and out. Press to reset the camera.",
+			"PropertyInspectorPath": "ui/inspector.html",
+			"Controllers": [
+				"Encoder"
+			],
+			"Encoder": {
+				"layout": "$A1",
+				"Icon": "imgs/actions/camera-zoom/icon",
+				"TriggerDescription": {
+					"Rotate": "Zoom",
+					"Push": "Reset camera"
+				}
+			},
+			"States": [
+				{
+					"Image": "imgs/actions/camera-zoom/key"
+				}
+			]
+		},
+		{
+			"Name": "Expression Weight",
+			"UUID": "com.vcamapp.vcam.expression-weight",
+			"Icon": "imgs/actions/expression-weight/icon",
+			"Tooltip": "Changes how strongly an expression shows. Press to turn it fully on or off.",
+			"PropertyInspectorPath": "ui/inspector.html",
+			"Controllers": [
+				"Encoder"
+			],
+			"Encoder": {
+				"layout": "$B1",
+				"Icon": "imgs/actions/expression-weight/icon",
+				"TriggerDescription": {
+					"Rotate": "Weight",
+					"Push": "On / Off"
+				}
+			},
+			"States": [
+				{
+					"Image": "imgs/actions/expression-weight/key"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,100 @@
+{
+	"Description": "VCam의 씬·아바타·표정·모션·카메라 화각 등을 Stream Deck에서 전환하고, VCam에 표시 중인 것을 키에서 확인할 수 있습니다. VCam 설정에서 VCam API를 활성화한 VCamNova에서 사용할 수 있습니다.",
+	"com.vcamapp.vcam.scene": {
+		"Name": "씬",
+		"Tooltip": "씬을 전환합니다. 표시 중인 씬의 키가 켜집니다."
+	},
+	"com.vcamapp.vcam.avatar": {
+		"Name": "아바타",
+		"Tooltip": "아바타를 전환합니다. 표시 중인 아바타의 키가 켜집니다."
+	},
+	"com.vcamapp.vcam.expression": {
+		"Name": "표정",
+		"Tooltip": "표정을 적용하거나 해제합니다. 적용 중에는 키가 켜집니다."
+	},
+	"com.vcamapp.vcam.motion": {
+		"Name": "모션",
+		"Tooltip": "모션을 재생하거나 정지합니다. 재생 중에는 키가 켜집니다."
+	},
+	"com.vcamapp.vcam.shortcut": {
+		"Name": "단축어",
+		"Tooltip": "VCam의 단축어를 실행합니다. 실행 중에는 키가 켜집니다."
+	},
+	"com.vcamapp.vcam.recording": {
+		"Name": "녹화",
+		"Tooltip": "녹화를 시작하거나 중지합니다. 녹화 중에는 경과 시간을 표시합니다."
+	},
+	"com.vcamapp.vcam.emoji": {
+		"Name": "이모지",
+		"Tooltip": "아바타 위에 이모지를 표시합니다."
+	},
+	"com.vcamapp.vcam.subtitle": {
+		"Name": "자막",
+		"Tooltip": "자막을 표시하거나 숨깁니다. 표시 중에는 키가 켜집니다."
+	},
+	"com.vcamapp.vcam.object-visibility": {
+		"Name": "오브젝트 표시",
+		"Tooltip": "씬의 오브젝트를 표시하거나 숨깁니다. 표시 중에는 키가 켜집니다."
+	},
+	"com.vcamapp.vcam.video": {
+		"Name": "동영상",
+		"Tooltip": "씬의 동영상을 재생하거나 일시 정지합니다. 재생 중에는 키가 켜집니다."
+	},
+	"com.vcamapp.vcam.camera-preset": {
+		"Name": "카메라 프리셋",
+		"Tooltip": "저장한 화각으로 카메라를 이동합니다. 키를 길게 누르면 현재 화각을 저장합니다."
+	},
+	"com.vcamapp.vcam.camera-reset": {
+		"Name": "카메라 초기화",
+		"Tooltip": "카메라를 기본 화각으로 되돌립니다."
+	},
+	"com.vcamapp.vcam.background-color": {
+		"Name": "배경색",
+		"Tooltip": "캔버스 맨 뒤의 색을 바꿉니다."
+	},
+	"com.vcamapp.vcam.tracking-status": {
+		"Name": "트래킹 상태",
+		"Tooltip": "트래킹을 보내는 앱이나 기기가 연결되어 있는 동안 키가 켜집니다."
+	},
+	"com.vcamapp.vcam.camera-zoom": {
+		"Name": "확대/축소",
+		"Tooltip": "돌려서 카메라를 확대·축소합니다. 누르면 카메라를 초기화합니다.",
+		"Encoder": {
+			"TriggerDescription": {
+				"Rotate": "확대/축소",
+				"Push": "카메라 초기화"
+			}
+		}
+	},
+	"com.vcamapp.vcam.expression-weight": {
+		"Name": "표정 강도",
+		"Tooltip": "표정의 강도를 바꿉니다. 누르면 최대와 끔을 전환합니다.",
+		"Encoder": {
+			"TriggerDescription": {
+				"Rotate": "강도",
+				"Push": "켜기/끄기"
+			}
+		}
+	},
+	"Localization": {
+		"Scene {number}": "씬 {number}",
+		"Model": "모델",
+		"Image": "이미지",
+		"Video": "동영상",
+		"Screen": "화면",
+		"Video Capture": "영상 캡처",
+		"Web": "웹",
+		"Text": "텍스트",
+		"Wind": "바람",
+		"Untitled": "이름 없음",
+		"VCam is not connected": "VCam에 연결되어 있지 않습니다",
+		"Update VCam to use this action": "이 액션을 사용하려면 VCam을 업데이트해 주세요",
+		"Could not read from VCam": "VCam에서 읽어오지 못했습니다",
+		"VCam is not connected. Start VCam, turn on the VCam API in Settings > Integration, and check Connection below.": "VCam에 연결되어 있지 않습니다. VCam을 실행하고 설정의 ‘연동’에서 VCam API를 활성화한 뒤, 아래의 ‘연결’을 확인해 주세요.",
+		"This action needs VCam API {since} or later, and the connected VCam has API {current}. Update VCam to use it.": "이 액션에는 VCam API {since} 이상이 필요하지만, 연결된 VCam은 API {current}입니다. 사용하려면 VCam을 업데이트해 주세요.",
+		"This action needs VCam API {since} or later, and the connected VCam is older. Update VCam to use it.": "이 액션에는 VCam API {since} 이상이 필요하지만, 연결된 VCam은 그보다 이전 버전입니다. 사용하려면 VCam을 업데이트해 주세요.",
+		"Zoom": "확대/축소",
+		"Expression": "표정",
+		"Offline": "연결 안 됨"
+	}
+}

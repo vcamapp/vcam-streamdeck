@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>VCam Settings</title>
+		<meta charset="utf-8" />
+		<script src="locales.js"></script>
+		<script>
+			// sdpi-components calls a connect function defined before it loads, which tells the action and Stream Deck's language.
+			// Only that action's fields are added, so that lists of the other actions do not ask the plugin for their choices,
+			// and they are translated before sdpi-components draws them.
+			window.connectElgatoStreamDeckSocket = (port, uuid, registerEvent, info, actionInfo) => {
+				const { language } = JSON.parse(info).application;
+				const strings = { ...window.vcamLocales.en, ...window.vcamLocales[language] };
+				document.documentElement.lang = language in window.vcamLocales ? language : "en";
+
+				const fill = (id, template) => {
+					const content = template?.content.cloneNode(true);
+					if (!content) {
+						return;
+					}
+					content.querySelectorAll("[data-i18n]").forEach((element) => (element.textContent = strings[element.dataset.i18n]));
+					content.querySelectorAll("[data-i18n-label]").forEach((element) => element.setAttribute("label", strings[element.dataset.i18nLabel]));
+					content
+						.querySelectorAll("[data-i18n-placeholder]")
+						.forEach((element) => element.setAttribute("placeholder", strings[element.dataset.i18nPlaceholder]));
+					document.getElementById(id).replaceWith(content);
+				};
+				fill("action", document.querySelector(`template[data-action="${JSON.parse(actionInfo).action}"]`));
+				fill("connection", document.getElementById("connection-template"));
+			};
+		</script>
+		<script src="sdpi-components.js"></script>
+		<style>
+			summary,
+			p {
+				color: #d8d8d8;
+				font-family: system-ui, sans-serif;
+				font-size: 9pt;
+			}
+
+			summary {
+				cursor: pointer;
+				margin: 12px 0 8px;
+			}
+
+			p {
+				margin: 8px 0 8px 12px;
+				white-space: normal;
+			}
+
+			#notice {
+				border-left: 3px solid #f5a524;
+				color: #f5f5f7;
+				padding-left: 8px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<p id="notice" hidden></p>
+		<div id="action"></div>
+
+		<div id="connection"></div>
+
+		<template id="connection-template">
+			<details>
+				<summary data-i18n="connection"></summary>
+				<sdpi-item data-i18n-label="host">
+					<sdpi-textfield setting="host" global placeholder="127.0.0.1"></sdpi-textfield>
+				</sdpi-item>
+				<sdpi-item data-i18n-label="port">
+					<sdpi-textfield setting="port" global placeholder="34965" pattern="[0-9]*"></sdpi-textfield>
+				</sdpi-item>
+				<sdpi-item data-i18n-label="token">
+					<sdpi-password setting="token" global data-i18n-placeholder="tokenPlaceholder"></sdpi-password>
+				</sdpi-item>
+				<p data-i18n="connectionHelp"></p>
+			</details>
+		</template>
+
+		<template data-action="com.vcamapp.vcam.scene">
+			<sdpi-item data-i18n-label="scene">
+				<sdpi-select setting="sceneId" datasource="scenes" hot-reload data-i18n-placeholder="chooseScene"></sdpi-select>
+			</sdpi-item>
+			<sdpi-item data-i18n-label="fade">
+				<sdpi-range setting="duration" min="0" max="3" step="0.1" default="0" showlabels></sdpi-range>
+			</sdpi-item>
+		</template>
+
+		<template data-action="com.vcamapp.vcam.avatar">
+			<sdpi-item data-i18n-label="avatar">
+				<sdpi-select setting="avatarId" datasource="avatars" hot-reload data-i18n-placeholder="chooseAvatar"></sdpi-select>
+			</sdpi-item>
+		</template>
+
+		<template data-action="com.vcamapp.vcam.video">
+			<sdpi-item data-i18n-label="video">
+				<sdpi-select setting="objectId" datasource="videos" hot-reload data-i18n-placeholder="chooseVideo"></sdpi-select>
+			</sdpi-item>
+			<sdpi-item>
+				<sdpi-checkbox setting="fromStart" default="true" data-i18n-label="playFromStart"></sdpi-checkbox>
+			</sdpi-item>
+		</template>
+
+		<template data-action="com.vcamapp.vcam.tracking-status">
+			<sdpi-item data-i18n-label="source">
+				<sdpi-select setting="sourceId" datasource="trackingSources" hot-reload data-i18n-placeholder="chooseSource"></sdpi-select>
+			</sdpi-item>
+			<p data-i18n="trackingHelp"></p>
+		</template>
+
+		<template data-action="com.vcamapp.vcam.expression">
+			<sdpi-item data-i18n-label="expression">
+				<sdpi-select setting="expressionName" datasource="expressions" hot-reload data-i18n-placeholder="chooseExpression"></sdpi-select>
+			</sdpi-item>
+			<sdpi-item data-i18n-label="weight">
+				<sdpi-range setting="weight" min="0.05" max="1" step="0.05" default="1" showlabels></sdpi-range>
+			</sdpi-item>
+			<sdpi-item data-i18n-label="fade">
+				<sdpi-range setting="duration" min="0" max="3" step="0.1" default="0" showlabels></sdpi-range>
+			</sdpi-item>
+		</template>
+
+		<template data-action="com.vcamapp.vcam.motion">
+			<sdpi-item data-i18n-label="motion">
+				<sdpi-select setting="motionId" datasource="motions" hot-reload data-i18n-placeholder="chooseMotion"></sdpi-select>
+			</sdpi-item>
+		</template>
+
+		<template data-action="com.vcamapp.vcam.shortcut">
+			<sdpi-item data-i18n-label="shortcut">
+				<sdpi-select setting="shortcutId" datasource="shortcuts" hot-reload data-i18n-placeholder="chooseShortcut"></sdpi-select>
+			</sdpi-item>
+		</template>
+
+		<template data-action="com.vcamapp.vcam.recording">
+			<p data-i18n="recordingHelp"></p>
+		</template>
+
+		<template data-action="com.vcamapp.vcam.emoji">
+			<sdpi-item data-i18n-label="emoji">
+				<sdpi-textfield setting="emoji" placeholder="👍"></sdpi-textfield>
+			</sdpi-item>
+		</template>
+
+		<template data-action="com.vcamapp.vcam.subtitle">
+			<sdpi-item data-i18n-label="text">
+				<sdpi-textarea setting="text" rows="3"></sdpi-textarea>
+			</sdpi-item>
+		</template>
+
+		<template data-action="com.vcamapp.vcam.object-visibility">
+			<sdpi-item data-i18n-label="object">
+				<sdpi-select setting="objectId" datasource="objects" hot-reload data-i18n-placeholder="chooseObject"></sdpi-select>
+			</sdpi-item>
+			<sdpi-item data-i18n-label="fade">
+				<sdpi-range setting="duration" min="0" max="3" step="0.1" default="0" showlabels></sdpi-range>
+			</sdpi-item>
+		</template>
+
+		<template data-action="com.vcamapp.vcam.camera-preset">
+			<sdpi-item data-i18n-label="view">
+				<sdpi-button onclick="SDPIComponents.streamDeckClient.send('sendToPlugin', { event: 'saveView' })" data-i18n="saveView"></sdpi-button>
+			</sdpi-item>
+			<sdpi-item data-i18n-label="move">
+				<sdpi-range setting="duration" min="0" max="3" step="0.1" default="0.5" showlabels></sdpi-range>
+			</sdpi-item>
+			<p data-i18n="presetHelp"></p>
+		</template>
+
+		<template data-action="com.vcamapp.vcam.background-color">
+			<sdpi-item data-i18n-label="color">
+				<sdpi-color setting="color" default="#00ff00"></sdpi-color>
+			</sdpi-item>
+		</template>
+
+		<template data-action="com.vcamapp.vcam.expression-weight">
+			<sdpi-item data-i18n-label="expression">
+				<sdpi-select setting="expressionName" datasource="expressions" hot-reload data-i18n-placeholder="chooseExpression"></sdpi-select>
+			</sdpi-item>
+		</template>
+		<script>
+			SDPIComponents.streamDeckClient.sendToPropertyInspector.subscribe(({ payload }) => {
+				if (payload?.event === "notice") {
+					const notice = document.getElementById("notice");
+					notice.textContent = payload.message;
+					notice.hidden = payload.message === "";
+				}
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,33 @@
+name: Bug report
+description: An action fails, or a key does not show what VCam is doing
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not paste your VCam API token.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: Which action you used with which settings, what you expected and what happened instead
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: The latest file in the `logs` folder of `com.vcamapp.vcam.sdPlugin`, in Stream Deck's Plugins folder
+      render: text
+  - type: textarea
+    id: versions
+    attributes:
+      label: Versions
+      value: |
+        - VCam for Stream Deck:
+        - Stream Deck app and device:
+        - VCam app and its version:
+        - OS of the computer running Stream Deck:
+        - Connected to VCam on the same computer or another device:
+    validations:
+      required: true

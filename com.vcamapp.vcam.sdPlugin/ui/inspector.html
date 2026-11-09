@@ -16,17 +16,25 @@
 				const fill = (id, template) => {
 					const content = template?.content.cloneNode(true);
 					if (!content) {
-						return;
+						return [];
 					}
 					content.querySelectorAll("[data-i18n]").forEach((element) => (element.textContent = strings[element.dataset.i18n]));
 					content.querySelectorAll("[data-i18n-label]").forEach((element) => element.setAttribute("label", strings[element.dataset.i18nLabel]));
 					content
 						.querySelectorAll("[data-i18n-placeholder]")
 						.forEach((element) => element.setAttribute("placeholder", strings[element.dataset.i18nPlaceholder]));
+					const fields = [...content.querySelectorAll("[setting]")];
 					document.getElementById(id).replaceWith(content);
+					return fields;
 				};
-				fill("action", document.querySelector(`template[data-action="${JSON.parse(actionInfo).action}"]`));
-				fill("connection", document.getElementById("connection-template"));
+				const action = JSON.parse(actionInfo);
+				const fields = [...fill("action", document.querySelector(`template[data-action="${action.action}"]`)), ...fill("connection", document.getElementById("connection-template"))];
+
+				// The fields listen for settings only after their first update, which comes after sdpi-components hands out the
+				// settings Stream Deck connects with, so the fields would show their placeholder until the next change.
+				Promise.all(fields.map((field) => field.updateComplete)).then(() =>
+					window.SDPIComponents.streamDeckClient.didReceiveSettings.dispatch(action),
+				);
 			};
 		</script>
 		<script src="sdpi-components.js"></script>

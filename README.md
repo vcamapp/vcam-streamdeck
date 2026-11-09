@@ -20,6 +20,10 @@ Control [VCam](https://vcamapp.com/en/) from Stream Deck through the VCam API, a
 - VCamNova with the VCam API turned on in Settings > Integration
 - To control VCam on another computer, allow connections from other devices there, and enter that computer's address and the token shown in the same settings under Connection in the action's settings
 
+## Install
+
+Download [com.vcamapp.vcam.streamDeckPlugin](https://github.com/vcamapp/vcam-streamdeck/releases/latest/download/com.vcamapp.vcam.streamDeckPlugin) and open it. Stream Deck installs the plugin.
+
 ## Actions
 
 | Action | Press | Lights up while |

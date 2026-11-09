@@ -5,6 +5,12 @@ Control [VCam](https://vcamapp.com/en/) from Stream Deck through the VCam API, a
 > [!NOTE]
 > The VCam API is currently available only in [VCamNova](https://vcamapp.com/en/vcamnova), the next version of VCam in development. The released VCam does not offer it yet. With it, assign a shortcut key in VCam and send it with Stream Deck's Hotkey action.
 
+## Install / インストール
+
+Download [com.vcamapp.vcam.streamDeckPlugin](https://github.com/vcamapp/vcam-streamdeck/releases/latest/download/com.vcamapp.vcam.streamDeckPlugin) and open it. Stream Deck installs the plugin.
+
+[com.vcamapp.vcam.streamDeckPlugin](https://github.com/vcamapp/vcam-streamdeck/releases/latest/download/com.vcamapp.vcam.streamDeckPlugin)をダウンロードして開くと、Stream Deckにプラグインがインストールされます。
+
 ## What it does
 
 - **Switches what you show without bringing VCam to the front.** Scenes, avatars, expressions, motions, your VCam shortcuts, subtitles, objects, videos, emoji, camera views, the background color, and recording.
@@ -19,10 +25,6 @@ Control [VCam](https://vcamapp.com/en/) from Stream Deck through the VCam API, a
 - Stream Deck 7.1 or later on macOS 12 or later, or on Windows 10 or later
 - VCamNova with the VCam API turned on in Settings > Integration
 - To control VCam on another computer, allow connections from other devices there, and enter that computer's address and the token shown in the same settings under Connection in the action's settings
-
-## Install
-
-Download [com.vcamapp.vcam.streamDeckPlugin](https://github.com/vcamapp/vcam-streamdeck/releases/latest/download/com.vcamapp.vcam.streamDeckPlugin) and open it. Stream Deck installs the plugin.
 
 ## Actions
 
